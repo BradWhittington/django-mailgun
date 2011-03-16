@@ -20,11 +20,17 @@ Installing mailgun (NB, this is a required step, as the lib is not on pypi)::
 
 If you are using python version 2.6 or below, you will need to use the following::
     
-    pip install -e git://github.com/bradwhittington/mailgun.py.git@py25#egg=pymailgun
+    pip install -e git://github.com/mailgun/mailgun.py.git@py25#egg=pymailgun
 
 Install django-mailgun::
 
     pip install -e git://github.com/bradwhittington/django-mailgun.git#egg=django_mailgun 
+
+NOTE: IF you are having issues with unicode/utf-8 support in python 2.5/2.6, you will need 
+to use my fork of mailgun, until https://github.com/mailgun/mailgun.py/issues#issue/4 is fixed:
+
+    pip install -e git://github.com/bradwhittington/mailgun.py.git@py25#egg=pymailgun
+
 
 Add the following to your settings.py::
 

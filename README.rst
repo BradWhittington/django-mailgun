@@ -14,7 +14,7 @@ per http://docs.djangoproject.com/en/dev/topics/email/#e-mail-backends
 Getting going
 =============
 
-Installing mailgun::
+Installing mailgun (NB, this is a required step, as the lib is not on pypi)::
 
     pip install -e git://github.com/mailgun/mailgun.py.git#egg=pymailgun
 

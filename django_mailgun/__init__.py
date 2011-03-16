@@ -36,7 +36,7 @@ class MailgunBackend(BaseEmailBackend):
             try:
                 response = MailgunMessage.send_raw(
                     sender=message.from_email,
-                    recipients=message.recipients(),
+                    recipients=','.join(message.recipients()),
                     mime_body=message.message().as_string(),
                     servername=self._server_name
                 )

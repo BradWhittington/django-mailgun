@@ -48,5 +48,5 @@ error emails will all fail and you'll be blissfully unaware of a problem.
 
 
 .. _Builtin Email Error Reporting: http://docs.djangoproject.com/en/1.2/howto/error-reporting/
-   .. _Django: http://djangoproject.com
-      .. _Mailgun: http://mailgun.net
+.. _Django: http://djangoproject.com
+.. _Mailgun: http://mailgun.net

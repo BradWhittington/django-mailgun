@@ -13,8 +13,6 @@ per http://docs.djangoproject.com/en/dev/topics/email/#e-mail-backends
 
 Getting going
 =============
-Assuming you've got Django_ installed, you'll need Boto_ 2.0b4 or higher. Boto_
-is a Python library that wraps the AWS API.
 
 Installing mailgun::
 
@@ -35,6 +33,8 @@ Add the following to your settings.py::
     # These are optional -- if they're set as environment variables they won't
     # need to be set here as well
     MAILGUN_ACCESS_KEY = 'ACCESS-KEY'
+    # This is optional entirely, mailgun will default to a server if none specified
+    MAILGUN_SERVER_NAME = 'SERVER-NAME'
 
 Now, when you use ``django.core.mail.send_mail``, Mailgun will send the messages
 

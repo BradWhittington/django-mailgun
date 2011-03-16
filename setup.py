@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 import os
+import platform
 
 DESCRIPTION = "A Django email backend for Mailgun"
 
@@ -31,6 +32,6 @@ setup(
     long_description=LONG_DESCRIPTION,
     platforms=['any'],
     classifiers=CLASSIFIERS,
-    install_requires=['mailgun.py'],
+    #TODO: get mailgun into pypi so it can be a requirement :)
 )
 

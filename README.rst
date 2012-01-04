@@ -14,23 +14,9 @@ per http://docs.djangoproject.com/en/dev/topics/email/#e-mail-backends
 Getting going
 =============
 
-Installing mailgun (NB, this is a required step, as the lib is not on pypi)::
-
-    pip install -e git://github.com/bradwhittington/mailgun.py.git#egg=pymailgun
-
-If you are using python version 2.6 or below, you will need to use the following::
-    
-    pip install -e git://github.com/bradwhittington/mailgun.py.git@py25#egg=pymailgun
-
 Install django-mailgun::
 
-    pip install -e git://github.com/bradwhittington/django-mailgun.git#egg=django_mailgun 
-
-NOTE: IF you are having issues with unicode/utf-8 support in python 2.5/2.6, you will need 
-to use my fork of mailgun, until https://github.com/mailgun/mailgun.py/issues#issue/4 is fixed:
-
-    pip install -e git://github.com/bradwhittington/mailgun.py.git@py25#egg=pymailgun
-
+    pip install django-mailgun
 
 Add the following to your settings.py::
 
@@ -43,15 +29,6 @@ Add the following to your settings.py::
     MAILGUN_SERVER_NAME = 'SERVER-NAME'
 
 Now, when you use ``django.core.mail.send_mail``, Mailgun will send the messages
-
-Django Builtin-in Error Emails
-==============================
-
-If you'd like Django's `Builtin Email Error Reporting`_ to function properly
-(actually send working emails), you'll have to explicitly set the
-``SERVER_EMAIL`` setting to one of your SES-verified addresses. Otherwise, your
-error emails will all fail and you'll be blissfully unaware of a problem.
-
 
 .. _Builtin Email Error Reporting: http://docs.djangoproject.com/en/1.2/howto/error-reporting/
 .. _Django: http://djangoproject.com

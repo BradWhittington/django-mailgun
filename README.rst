@@ -21,11 +21,7 @@ Install django-mailgun::
 Add the following to your settings.py::
 
     EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
-
-    # These are optional -- if they're set as environment variables they won't
-    # need to be set here as well
     MAILGUN_ACCESS_KEY = 'ACCESS-KEY'
-    # This is optional entirely, mailgun will default to a server if none specified
     MAILGUN_SERVER_NAME = 'SERVER-NAME'
 
 Now, when you use ``django.core.mail.send_mail``, Mailgun will send the messages

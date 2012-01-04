@@ -15,7 +15,6 @@ class MailgunBackend(BaseEmailBackend):
         self._access_key = getattr(settings, 'MAILGUN_ACCESS_KEY', None)
         self._server_name = getattr(settings, 'MAILGUN_SERVER_NAME', '')
         self._api_url = "https://api.mailgun.net/v2/%s/" % self._server_name
-        Mailgun.init(self._access_key)
 
     def open(self):
         """Stub for open connection, all sends are done over HTTP POSTs

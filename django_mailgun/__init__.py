@@ -3,6 +3,12 @@ from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import sanitize_address
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
+
 class MailgunBackend(BaseEmailBackend):
     """A Django Email backend that uses mailgun.
     """
@@ -43,7 +49,7 @@ class MailgunBackend(BaseEmailBackend):
                             "from": recipients,
                          },
                      files={
-                            "message": email_message.message().as_string(),
+                            "message": StringIO(email_message.message().as_string(unixfrom=True)),
                          }
                      )
         except:

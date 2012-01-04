@@ -37,7 +37,7 @@ class MailgunBackend(BaseEmailBackend):
 
         try:
             r = requests.\
-                post(self._api_url + "messages.mime"),
+                post(self._api_url + "messages.mime",
                      auth=("api", self._access_key),
                      data={
                             "to": from_email,

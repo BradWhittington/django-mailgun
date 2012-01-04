@@ -8,6 +8,8 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+class MailgunAPIError(Exception):
+    pass
 
 class MailgunBackend(BaseEmailBackend):
     """A Django Email backend that uses mailgun.
@@ -18,8 +20,15 @@ class MailgunBackend(BaseEmailBackend):
                         fail_silently=fail_silently, 
                         *args, **kwargs)
 
-        self._access_key = getattr(settings, 'MAILGUN_ACCESS_KEY', None)
-        self._server_name = getattr(settings, 'MAILGUN_SERVER_NAME', '')
+        try:
+            self._access_key = getattr(settings, 'MAILGUN_ACCESS_KEY')
+            self._server_name = getattr(settings, 'MAILGUN_SERVER_NAME')
+        except AttributeError:
+            if fail_silently:
+                self._access_key, self._server_name = None
+            else:
+                raise
+
         self._api_url = "https://api.mailgun.net/v2/%s/" % self._server_name
 
     def open(self):
@@ -56,6 +65,12 @@ class MailgunBackend(BaseEmailBackend):
             if not self.fail_silently:
                 raise
             return False
+
+        if r.status_code != 200:
+            if not self.fail_silently:
+                raise MailgunAPIError(r)
+            return False
+
         return True
 
     def send_messages(self, email_messages):

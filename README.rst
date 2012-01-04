@@ -16,11 +16,11 @@ Getting going
 
 Installing mailgun (NB, this is a required step, as the lib is not on pypi)::
 
-    pip install -e git://github.com/mailgun/mailgun.py.git#egg=pymailgun
+    pip install -e git://github.com/bradwhittington/mailgun.py.git#egg=pymailgun
 
 If you are using python version 2.6 or below, you will need to use the following::
     
-    pip install -e git://github.com/mailgun/mailgun.py.git@py25#egg=pymailgun
+    pip install -e git://github.com/bradwhittington/mailgun.py.git@py25#egg=pymailgun
 
 Install django-mailgun::
 

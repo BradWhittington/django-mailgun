@@ -54,7 +54,7 @@ class MailgunBackend(BaseEmailBackend):
                 post(self._api_url + "messages.mime",
                      auth=("api", self._access_key),
                      data={
-                            "to": recipients,
+                            "to": ", ".join(recipients),
                             "from": from_email,
                          },
                      files={

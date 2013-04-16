@@ -16,13 +16,16 @@ class MailgunBackend(BaseEmailBackend):
     """
 
     def __init__(self, fail_silently=False, *args, **kwargs):
+        access_key, server_name = (kwargs.pop('access_key', None),
+                                   kwargs.pop('server_name', None))
+    
         super(MailgunBackend, self).__init__(
                         fail_silently=fail_silently, 
                         *args, **kwargs)
 
         try:
-            self._access_key = getattr(settings, 'MAILGUN_ACCESS_KEY')
-            self._server_name = getattr(settings, 'MAILGUN_SERVER_NAME')
+            self._access_key = access_key or getattr(settings, 'MAILGUN_ACCESS_KEY')
+            self._server_name = server_name or getattr(settings, 'MAILGUN_SERVER_NAME')
         except AttributeError:
             if fail_silently:
                 self._access_key, self._server_name = None

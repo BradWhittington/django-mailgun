@@ -22,7 +22,7 @@ CLASSIFIERS = [
 
 setup(
     name='django-mailgun',
-    version='0.2.1',
+    version='0.2.2',
     packages=['django_mailgun'],
     author='Bradley Whittington',
     author_email='radbrad182@gmail.com',

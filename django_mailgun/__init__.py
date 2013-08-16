@@ -28,7 +28,7 @@ class MailgunBackend(BaseEmailBackend):
             self._server_name = server_name or getattr(settings, 'MAILGUN_SERVER_NAME')
         except AttributeError:
             if fail_silently:
-                self._access_key, self._server_name = None
+                self._access_key, self._server_name = None, None
             else:
                 raise
 

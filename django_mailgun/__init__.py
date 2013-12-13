@@ -56,7 +56,7 @@ class MailgunBackend(BaseEmailBackend):
             post_data.append(('subject', email_message.subject,))
             post_data.append(('from', from_email,))
 
-            if email_message.alternatives:
+            if hasattr(email_message, 'alternatives') and email_message.alternatives:
                 for alt in email_message.alternatives:
                     if alt[1] == 'text/html':
                         post_data.append(('html', alt[0],))

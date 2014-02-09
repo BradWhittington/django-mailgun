@@ -6,7 +6,10 @@ from django.core.mail.message import sanitize_address
 try:
     from cStringIO import StringIO
 except ImportError:
-    from StringIO import StringIO
+    try:
+        from StringIO import StringIO
+    except ImportError:
+        from io import StringIO
 
 class MailgunAPIError(Exception):
     pass

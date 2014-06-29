@@ -3,6 +3,8 @@ from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import sanitize_address
 
+from requests.packages.urllib3.filepost import encode_multipart_formdata
+
 class MailgunAPIError(Exception):
     pass
 
@@ -49,7 +51,6 @@ class MailgunBackend(BaseEmailBackend):
 
         try:
 
-            from requests.packages.urllib3.filepost import encode_multipart_formdata
             post_data = []
             post_data.append(('to', (",".join(recipients)),))
             post_data.append(('text', email_message.body,))

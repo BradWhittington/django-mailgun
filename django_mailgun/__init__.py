@@ -66,8 +66,8 @@ class MailgunBackend(BaseEmailBackend):
             if email_message.attachments:
                 for attachment in email_message.attachments:
                     post_data.append(('attachment', (attachment[0], attachment[1],)))
-                    content, header = encode_multipart_formdata(post_data)
-                    headers = {'Content-Type': header}
+                content, header = encode_multipart_formdata(post_data)
+                headers = {'Content-Type': header}
             else:
                 content = post_data
                 headers = None

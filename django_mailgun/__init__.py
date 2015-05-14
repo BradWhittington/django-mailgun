@@ -35,7 +35,7 @@ class MailgunBackend(BaseEmailBackend):
             else:
                 raise
 
-        self._api_url = "https://api.mailgun.net/v2/%s/" % self._server_name
+        self._api_url = "https://api.mailgun.net/v3/%s/" % self._server_name
 
     def open(self):
         """Stub for open connection, all sends are done over HTTP POSTs

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
@@ -21,9 +23,9 @@ class MailgunBackend(BaseEmailBackend):
     def __init__(self, fail_silently=False, *args, **kwargs):
         access_key, server_name = (kwargs.pop('access_key', None),
                                    kwargs.pop('server_name', None))
-    
+
         super(MailgunBackend, self).__init__(
-                        fail_silently=fail_silently, 
+                        fail_silently=fail_silently,
                         *args, **kwargs)
 
         try:

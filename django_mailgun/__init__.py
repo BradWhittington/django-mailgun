@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend

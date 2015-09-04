@@ -2,6 +2,7 @@ import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import sanitize_address
+from django.utils.encoding import smart_text
 
 try:
     from io import StringIO
@@ -11,8 +12,10 @@ except ImportError:
     except ImportError:
         from StringIO import StringIO
 
+
 class MailgunAPIError(Exception):
     pass
+
 
 class MailgunBackend(BaseEmailBackend):
     """A Django Email backend that uses mailgun.
@@ -21,9 +24,9 @@ class MailgunBackend(BaseEmailBackend):
     def __init__(self, fail_silently=False, *args, **kwargs):
         access_key, server_name = (kwargs.pop('access_key', None),
                                    kwargs.pop('server_name', None))
-    
+
         super(MailgunBackend, self).__init__(
-                        fail_silently=fail_silently, 
+                        fail_silently=fail_silently,
                         *args, **kwargs)
 
         try:
@@ -55,6 +58,7 @@ class MailgunBackend(BaseEmailBackend):
         recipients = [sanitize_address(addr, email_message.encoding)
                       for addr in email_message.recipients()]
 
+        message = smart_text(email_message.message().as_string(), errors='ignore')
         try:
             r = requests.\
                 post(self._api_url + "messages.mime",
@@ -64,7 +68,7 @@ class MailgunBackend(BaseEmailBackend):
                             "from": from_email,
                          },
                      files={
-                            "message": StringIO(unicode(email_message.message().as_string(), errors="ignore")),
+                            "message": StringIO(message),
                          }
                      )
         except:

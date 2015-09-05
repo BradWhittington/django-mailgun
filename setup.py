@@ -3,6 +3,8 @@ import os
 import platform
 import sys
 
+version = '0.3.0'
+
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     os.system('python setup.py bdist_wheel upload')
@@ -43,7 +45,7 @@ CLASSIFIERS = [
 
 setup(
     name='django-mailgun',
-    version='0.3.0',
+    version=version,
     packages=['django_mailgun'],
     author='Bradley Whittington',
     author_email='radbrad182@gmail.com',

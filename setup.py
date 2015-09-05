@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 import os
 import platform
+import sys
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')

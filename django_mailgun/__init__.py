@@ -4,15 +4,8 @@ import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import sanitize_address
+from django.utils.six import StringIO
 from django.utils.encoding import smart_text
-
-try:
-    from io import StringIO
-except ImportError:
-    try:
-        from cStringIO import StringIO
-    except ImportError:
-        from StringIO import StringIO
 
 
 class MailgunAPIError(Exception):

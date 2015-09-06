@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2015-09-04]
 ### Added
+- Added configuration test (@pydanny)
+
+## [2015-09-04]
+### Added
 - Changelog (@pydanny)
 - .travis.yml file with codecov (@pydanny)
 - Many new trove classifiers (@pydanny)

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
@@ -7,6 +9,7 @@ from requests.packages.urllib3.filepost import encode_multipart_formdata
 
 class MailgunAPIError(Exception):
     pass
+
 
 class MailgunBackend(BaseEmailBackend):
     """A Django Email backend that uses mailgun.

@@ -1,18 +1,16 @@
+from __future__ import unicode_literals
+
 import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import sanitize_address
+from django.utils.six import StringIO
+from django.utils.encoding import smart_text
 
-try:
-    from io import StringIO
-except ImportError:
-    try:
-        from cStringIO import StringIO
-    except ImportError:
-        from StringIO import StringIO
 
 class MailgunAPIError(Exception):
     pass
+
 
 class MailgunBackend(BaseEmailBackend):
     """A Django Email backend that uses mailgun.
@@ -31,7 +29,7 @@ class MailgunBackend(BaseEmailBackend):
             self._server_name = server_name or getattr(settings, 'MAILGUN_SERVER_NAME')
         except AttributeError:
             if fail_silently:
-                self._access_key, self._server_name = None
+                self._access_key, self._server_name = None, None
             else:
                 raise
 
@@ -55,41 +53,27 @@ class MailgunBackend(BaseEmailBackend):
         recipients = [sanitize_address(addr, email_message.encoding)
                       for addr in email_message.recipients()]
 
+        message = smart_text(email_message.message().as_string(), errors='ignore')
         try:
-
-            from requests.packages.urllib3.filepost import encode_multipart_formdata
-            post_data = []
-            post_data.append(('to', (",".join(recipients)),))
-            post_data.append(('text', email_message.body,))
-            post_data.append(('subject', email_message.subject,))
-            post_data.append(('from', from_email,))
-
-            if hasattr(email_message, 'alternatives') and email_message.alternatives:
-                for alt in email_message.alternatives:
-                    if alt[1] == 'text/html':
-                        post_data.append(('html', alt[0],))
-                        break
-
-            if email_message.attachments:
-                for attachment in email_message.attachments:
-                    post_data.append(('attachment', (attachment[0], attachment[1],)))
-                    content, header = encode_multipart_formdata(post_data)
-                    headers = {'Content-Type': header}
-            else:
-                content = post_data
-                headers = None
-
-            response = requests.post(self._api_url + "messages",
-                                        auth=("api", self._access_key),
-                                        data=content, headers=headers)
+            r = requests.\
+                post(self._api_url + "messages.mime",
+                     auth=("api", self._access_key),
+                     data={
+                            "to": ", ".join(recipients),
+                            "from": from_email,
+                         },
+                     files={
+                            "message": StringIO(message),
+                         }
+                     )
         except:
             if not self.fail_silently:
                 raise
             return False
 
-        if response.status_code != 200:
+        if r.status_code != 200:
             if not self.fail_silently:
-                raise MailgunAPIError(response)
+                raise MailgunAPIError(r)
             return False
 
         return True

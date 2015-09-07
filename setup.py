@@ -1,6 +1,20 @@
 from setuptools import setup, find_packages
 import os
 import platform
+import sys
+
+version = '0.3.0'
+
+if sys.argv[-1] == 'publish':
+    os.system('python setup.py sdist upload')
+    os.system('python setup.py bdist_wheel upload')
+    sys.exit()
+
+if sys.argv[-1] == 'tag':
+    print("Tagging the version on github:")
+    os.system("git tag -a %s -m 'version %s'" % (version, version))
+    os.system("git push --tags")
+    sys.exit()
 
 DESCRIPTION = "A Django email backend for Mailgun"
 
@@ -12,17 +26,26 @@ except:
 
 CLASSIFIERS = [
     'Development Status :: 4 - Beta',
+    'Framework :: Django',
+    'Framework :: Django :: 1.4',
+    'Framework :: Django :: 1.5',
+    'Framework :: Django :: 1.6',
+    'Framework :: Django :: 1.7',
+'    Framework :: Django :: 1.8',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
+    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.3',
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
     'Topic :: Software Development :: Libraries :: Python Modules',
-    'Framework :: Django',
 ]
 
 setup(
     name='django-mailgun',
-    version='0.2.2a',
+    version=version,
     packages=['django_mailgun'],
     author='Bradley Whittington',
     author_email='radbrad182@gmail.com',
@@ -33,6 +56,4 @@ setup(
     platforms=['any'],
     install_requires=['requests'],
     classifiers=CLASSIFIERS,
-    #TODO: get mailgun into pypi so it can be a requirement :)
 )
-

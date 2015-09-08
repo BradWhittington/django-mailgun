@@ -3,7 +3,7 @@ import os
 import platform
 import sys
 
-version = '0.3.0'
+version = '0.4.0'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')

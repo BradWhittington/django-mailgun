@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2015-09-07]
 ### Added
-- Upgraded to Mailgun API V3
+- Moved AUTHORS to CONTRIBUTORS.rst (@pydanny)
+- Upgraded to Mailgun API V3 (@omidraha)
 
 ## [2015-09-06]
 ### Added

@@ -2,6 +2,14 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2015-09-07]
+### Added
+- Upgraded to Mailgun API V3
+
+## [2015-09-06]
+### Added
+- Expanded tests and coverage is now 50% (@pydanny)
+
 ## [2015-09-04]
 ### Added
 - Added configuration test (@pydanny)

@@ -2,9 +2,11 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2015-09-07]
+## [2015-09-08]
 ### Changed
-- Moved more internals to requests library (@ghinch)
+- 0.5.0: Architecture flattening (@pydanny)
+- 0.4.0: Moved more internals to requests library (@ghinch)
+- 0.4.0: Flake8 setup and cleanup (@pydanny)
 
 
 ## [2015-09-07]

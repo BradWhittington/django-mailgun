@@ -45,7 +45,7 @@ CLASSIFIERS = [
 setup(
     name='django-mailgun',
     version=version,
-    packages=['django_mailgun'],
+    py_modules=['django_mailgun'],
     author='Bradley Whittington',
     author_email='radbrad182@gmail.com',
     url='http://github.com/bradwhittington/django-mailgun/',

@@ -4,10 +4,12 @@ from django.conf import settings
 from django_mailgun import MailgunBackend
 from pytest import raises
 
+
 def test_no_configuration():
 
     with raises(ImproperlyConfigured):
         MailgunBackend()
+
 
 def test_configuration():
     settings.configure(
@@ -16,8 +18,9 @@ def test_configuration():
     )
     MailgunBackend()
 
+
 def test_marker_methods():
     # Already configured
     mb = MailgunBackend()
-    assert mb.open() == None
-    assert mb.close() == None
+    assert mb.open() is None
+    assert mb.close() is None

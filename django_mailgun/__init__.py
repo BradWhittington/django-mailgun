@@ -7,6 +7,7 @@ from django.core.mail.message import sanitize_address
 
 from requests.packages.urllib3.filepost import encode_multipart_formdata
 
+
 class MailgunAPIError(Exception):
     pass
 
@@ -20,8 +21,8 @@ class MailgunBackend(BaseEmailBackend):
                                    kwargs.pop('server_name', None))
 
         super(MailgunBackend, self).__init__(
-                        fail_silently=fail_silently,
-                        *args, **kwargs)
+            fail_silently=fail_silently,
+            *args, **kwargs)
 
         try:
             self._access_key = access_key or getattr(settings, 'MAILGUN_ACCESS_KEY')
@@ -76,8 +77,8 @@ class MailgunBackend(BaseEmailBackend):
                 headers = None
 
             response = requests.post(self._api_url + "messages",
-                                        auth=("api", self._access_key),
-                                        data=content, headers=headers)
+                auth=("api", self._access_key),
+                data=content, headers=headers)
         except:
             if not self.fail_silently:
                 raise

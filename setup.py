@@ -1,6 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 import os
-import platform
 import sys
 
 version = '0.4.0'

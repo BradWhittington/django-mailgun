@@ -3,6 +3,11 @@ All enhancements and patches to cookiecutter-django will be documented in this f
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [2015-09-07]
+### Changed
+- Moved more internals to requests library (@ghinch)
+
+
+## [2015-09-07]
 ### Added
 - Moved AUTHORS to CONTRIBUTORS.rst (@pydanny)
 - Upgraded to Mailgun API V3 (@omidraha)

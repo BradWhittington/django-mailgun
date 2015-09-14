@@ -60,6 +60,10 @@ class MailgunBackend(BaseEmailBackend):
             post_data.append(('text', email_message.body,))
             post_data.append(('subject', email_message.subject,))
             post_data.append(('from', from_email,))
+            # get our recipient variables if they were passed in
+            recipient_variables = email_message.extra_headers.pop('recipient_variables', None)
+            if recipient_variables is not None:
+                post_data.append(('recipient-variables', recipient_variables, ))
 
             if hasattr(email_message, 'alternatives') and email_message.alternatives:
                 for alt in email_message.alternatives:

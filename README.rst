@@ -24,7 +24,7 @@ Add the following to your settings.py::
     MAILGUN_ACCESS_KEY = 'ACCESS-KEY'
     MAILGUN_SERVER_NAME = 'SERVER-NAME'
 
-Now, when you use ``django.core.mail.send_mail``, Mailgun will send the messages
+Now, when you use ``django.core.mail.send_mail``, Mailgun will send the messages.
 
 .. _Builtin Email Error Reporting: http://docs.djangoproject.com/en/1.2/howto/error-reporting/
 .. _Django: http://djangoproject.com
@@ -37,7 +37,7 @@ add a valid json string to the `extra_headers` attribute of EmailMessage and Dja
 remove the string from the headers and send it appropriately.  For example::
 
     email = EmailMessage('Hi!', 'Cool message for %recipient.first_name%', 'admin@example.com', [joe@example.com, jane@example.com])
-    email.extra_headers['recipient_variables'] = '{"joe@example.com":{"first_name":"Joe"}, "jane@example.com":{"first_name:"Jane"}}'
+    email.extra_headers['recipient_variables'] = '{"joe@example.com":{"first_name":"Joe"}, "jane@example.com":{"first_name":"Jane"}}'
     email.send()
 
 When Jane receives her email, its body should read 'Cool message for Jane', and Joe will see

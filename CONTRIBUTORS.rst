@@ -6,4 +6,5 @@ Contributors
 - Frank Wiles
 - Ryan Everitt
 - Omid Raha (@omidraha)
-- Greg Hinch(@ghinch)
+- Greg Hinch (@ghinch)
+- wmsmith (@wmsmith)

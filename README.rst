@@ -1,14 +1,12 @@
-==========
+==============
 Django-Mailgun
-==========
-:Info: A Django email backend for use with Mailgun
-:Author: Bradley Whittington (http://github.com/bradwhittington, http://twitter.com/darb)
+==============
+A Django email backend for use with Mailgun
 
-This README is derived from https://github.com/hmarr/django-ses/blob/master/README.rst
 
 Overview
 =================
-Django-Mailgun is a drop-in mail backend for Django_, 
+Django-Mailgun is a drop-in mail backend for Django_,
 per http://docs.djangoproject.com/en/dev/topics/email/#e-mail-backends
 
 Getting going

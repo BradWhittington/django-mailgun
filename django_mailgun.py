@@ -11,6 +11,23 @@ __version__ = '0.6.0'
 version = '0.6.0'
 
 
+# A mapping of smtp headers to API key names
+# https://documentation.mailgun.com/user_manual.html#sending-via-smtp
+# https://documentation.mailgun.com/api-sending.html#sending
+#
+# structure is SMTP_HEADER: (api_name, data_transform_function)
+HEADERS_MAP = {
+    'X-Mailgun-Tag': ('o:tag', lambda x: x),
+    'X-Mailgun-Campain-Id': ('o:campain', lambda x: x),
+    'X-Mailgun-Dkim': ('o:dkim', lambda x: x),
+    'X-Mailgun-Deliver-By': ('o:deliverytime', lambda x: x),
+    'X-Mailgun-Drop-Message': ('o:testmode', lambda x: x),
+    'X-Mailgun-Track': ('o:tracking', lambda x: x),
+    'X-Mailgun-Track-Clicks': ('o:tracking-clicks', lambda x: x),
+    'X-Mailgun-Track-Opens': ('o:tracking-opens', lambda x: x),
+    'X-Mailgun-Variables': ('v:my-var', lambda x: x),
+}
+
 class MailgunAPIError(Exception):
     pass
 
@@ -37,6 +54,7 @@ class MailgunBackend(BaseEmailBackend):
                 raise
 
         self._api_url = "https://api.mailgun.net/v3/%s/" % self._server_name
+        self._headers_map = HEADERS_MAP
 
     def open(self):
         """Stub for open connection, all sends are done over HTTP POSTs
@@ -47,6 +65,19 @@ class MailgunBackend(BaseEmailBackend):
         """Close any open HTTP connections to the API server.
         """
         pass
+
+    def _map_smtp_headers_to_api_parameters(self, email_message):
+        """
+        Map the values passed in SMTP headers to API-ready
+        2-item tuples present in HEADERS_MAP
+        :return: 2-item tuples of the form (api_name, api_values)
+        """
+        api_data = []
+        for smtp_key, api_transformer in self._headers_map.iteritems():
+            data_to_transform = email_message.extra_headers.pop(smtp_key, None)
+            if data_to_transform is not None:
+                api_data.append(api_transformer[0], api_transformer[1](data_to_transform))
+        return api_data
 
     def _send(self, email_message):
         """A helper method that does the actual sending."""
@@ -67,6 +98,9 @@ class MailgunBackend(BaseEmailBackend):
             recipient_variables = email_message.extra_headers.pop('recipient_variables', None)
             if recipient_variables is not None:
                 post_data.append(('recipient-variables', recipient_variables, ))
+
+            for name, value in self._map_smtp_headers_to_api_parameters(email_message):
+                post_data.append((name, value, ))
 
             if hasattr(email_message, 'alternatives') and email_message.alternatives:
                 for alt in email_message.alternatives:

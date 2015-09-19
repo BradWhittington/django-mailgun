@@ -76,7 +76,7 @@ class MailgunBackend(BaseEmailBackend):
         for smtp_key, api_transformer in self._headers_map.iteritems():
             data_to_transform = email_message.extra_headers.pop(smtp_key, None)
             if data_to_transform is not None:
-                api_data.append(api_transformer[0], api_transformer[1](data_to_transform))
+                api_data.append((api_transformer[0], api_transformer[1](data_to_transform)))
         return api_data
 
     def _send(self, email_message):

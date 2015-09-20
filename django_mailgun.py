@@ -11,7 +11,9 @@ __version__ = '0.6.0'
 version = '0.6.0'
 
 
-# A mapping of smtp headers to API key names
+# A mapping of smtp headers to API key names, along
+# with a callable to transform them somehow (if nec.)
+#
 # https://documentation.mailgun.com/user_manual.html#sending-via-smtp
 # https://documentation.mailgun.com/api-sending.html#sending
 #
@@ -27,6 +29,7 @@ HEADERS_MAP = {
     'X-Mailgun-Track-Opens': ('o:tracking-opens', lambda x: x),
     'X-Mailgun-Variables': ('v:my-var', lambda x: x),
 }
+
 
 class MailgunAPIError(Exception):
     pass
@@ -70,13 +73,22 @@ class MailgunBackend(BaseEmailBackend):
         """
         Map the values passed in SMTP headers to API-ready
         2-item tuples present in HEADERS_MAP
+
+        header values must be a single string or list or tuple of strings
+
         :return: 2-item tuples of the form (api_name, api_values)
         """
         api_data = []
         for smtp_key, api_transformer in self._headers_map.iteritems():
             data_to_transform = email_message.extra_headers.pop(smtp_key, None)
             if data_to_transform is not None:
-                api_data.append((api_transformer[0], api_transformer[1](data_to_transform)))
+                if type(data_to_transform) in (list, tuple):
+                    # map each value in the tuple/list
+                    for data in data_to_transform:
+                        api_data.append((api_transformer[0], api_transformer[1](data)))
+                else:
+                    # we only have one value
+                    api_data.append((api_transformer[0], api_transformer[1](data_to_transform)))
         return api_data
 
     def _send(self, email_message):

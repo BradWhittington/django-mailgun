@@ -20,7 +20,7 @@ version = '0.6.0'
 # structure is SMTP_HEADER: (api_name, data_transform_function)
 HEADERS_MAP = {
     'X-Mailgun-Tag': ('o:tag', lambda x: x),
-    'X-Mailgun-Campain-Id': ('o:campain', lambda x: x),
+    'X-Mailgun-Campaign-Id': ('o:campaign', lambda x: x),
     'X-Mailgun-Dkim': ('o:dkim', lambda x: x),
     'X-Mailgun-Deliver-By': ('o:deliverytime', lambda x: x),
     'X-Mailgun-Drop-Message': ('o:testmode', lambda x: x),

@@ -2,10 +2,14 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2015-09-21]
+### Added
+- Ability to pass in extra tracking options to mailgun via API  (@wsmith)
+
 ## [2015-09-14]
 ### Added
-- Support for `Recipient Variables`
-- Version specification in python module
+- Support for `Recipient Variables` (@wsmith)
+- Version specification in python module (@pydanny)
 
 ## [2015-09-08]
 ### Changed

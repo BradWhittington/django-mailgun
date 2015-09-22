@@ -6,8 +6,7 @@ A Django email backend for use with Mailgun
 
 Overview
 =================
-Django-Mailgun is a drop-in mail backend for Django_,
-per http://docs.djangoproject.com/en/dev/topics/email/#e-mail-backends
+Django-Mailgun is a drop-in mail backend for Django_.
 
 Getting going
 =============
@@ -70,3 +69,8 @@ Mailgun's API states that no more than 3 tags are allowed per email, and each ta
 128 characters (https://documentation.mailgun.com/user_manual.html#tagging).  If you provide 4 tags,
 or a tag longer than 128 characters, Django-Mailgun will attempt to send such (potentially) invalid
 data.  You must ensure what you send is appropriate.
+
+Django Email Backend Reference
+================================
+
+* http://docs.djangoproject.com/en/dev/topics/email/#e-mail-backends

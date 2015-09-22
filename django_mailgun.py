@@ -7,8 +7,8 @@ from django.core.mail.message import sanitize_address
 
 from requests.packages.urllib3.filepost import encode_multipart_formdata
 
-__version__ = '0.6.0'
-version = '0.6.0'
+__version__ = '0.7.0'
+version = '0.7.0'
 
 
 # A mapping of smtp headers to API key names, along
@@ -130,8 +130,8 @@ class MailgunBackend(BaseEmailBackend):
                 headers = None
 
             response = requests.post(self._api_url + "messages",
-                auth=("api", self._access_key),
-                data=content, headers=headers)
+                    auth=("api", self._access_key),
+                    data=content, headers=headers)
         except:
             if not self.fail_silently:
                 raise

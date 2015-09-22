@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 import sys
 
-version = '0.6.0'
+version = '0.7.0'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -30,7 +30,7 @@ CLASSIFIERS = [
     'Framework :: Django :: 1.5',
     'Framework :: Django :: 1.6',
     'Framework :: Django :: 1.7',
-'    Framework :: Django :: 1.8',
+    'Framework :: Django :: 1.8',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',

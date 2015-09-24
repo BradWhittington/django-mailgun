@@ -2,9 +2,9 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2015-09-23] (0.7.1)
+## [2015-09-23]
 ### Removed
-- Old `build` directory that `setuptools` hadn't properly cleaned up when I flattened the architecture of this project. This fixes #28. (@pydanny)
+- 0.7.1: Old `build` directory that `setuptools` hadn't properly cleaned up when I flattened the architecture of this project. This fixes #28. (@pydanny)
 
 ## [2015-09-21]
 ### Added

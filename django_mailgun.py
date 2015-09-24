@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import six
 import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
@@ -79,7 +80,7 @@ class MailgunBackend(BaseEmailBackend):
         :return: 2-item tuples of the form (api_name, api_values)
         """
         api_data = []
-        for smtp_key, api_transformer in self._headers_map.iteritems():
+        for smtp_key, api_transformer in six.iteritems(self._headers_map):
             data_to_transform = email_message.extra_headers.pop(smtp_key, None)
             if data_to_transform is not None:
                 if type(data_to_transform) in (list, tuple):

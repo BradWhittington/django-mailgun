@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 import sys
 
-version = '0.7.1'
+version = '0.7.2'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -53,6 +53,6 @@ setup(
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     platforms=['any'],
-    install_requires=['requests'],
+    install_requires=['requests', 'six',],
     classifiers=CLASSIFIERS,
 )

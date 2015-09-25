@@ -8,8 +8,8 @@ from django.core.mail.message import sanitize_address
 
 from requests.packages.urllib3.filepost import encode_multipart_formdata
 
-__version__ = '0.7.1'
-version = '0.7.1'
+__version__ = '0.7.2'
+version = '0.7.2'
 
 
 # A mapping of smtp headers to API key names, along

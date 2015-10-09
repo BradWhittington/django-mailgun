@@ -5,6 +5,7 @@ import requests
 from django.conf import settings
 from django.core.mail.backends.base import BaseEmailBackend
 from django.core.mail.message import sanitize_address
+from django.utils.encoding import force_text
 
 from requests.packages.urllib3.filepost import encode_multipart_formdata
 
@@ -120,6 +121,16 @@ class MailgunBackend(BaseEmailBackend):
                     if alt[1] == 'text/html':
                         post_data.append(('html', alt[0],))
                         break
+
+            # Map Reply-To header if present
+            try:
+                if email_message.reply_to:
+                    post_data.append((
+                        "h:Reply-To",
+                        ", ".join(map(force_text, email_message.reply_to)),
+                    ))
+            except AttributeError:
+                pass
 
             if email_message.attachments:
                 for attachment in email_message.attachments:

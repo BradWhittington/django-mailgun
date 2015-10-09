@@ -8,4 +8,5 @@ Contributors
 - Omid Raha (@omidraha)
 - Greg Hinch (@ghinch)
 - wmsmith (@wmsmith)
-- Rollo Konig-Brock (@rollokb) 
+- Rollo Konig-Brock (@rollokb)
+- @zakdoek

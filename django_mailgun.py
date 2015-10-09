@@ -9,8 +9,8 @@ from django.utils.encoding import force_text
 
 from requests.packages.urllib3.filepost import encode_multipart_formdata
 
-__version__ = '0.7.2'
-version = '0.7.2'
+__version__ = '0.8.0'
+version = __version__
 
 
 # A mapping of smtp headers to API key names, along

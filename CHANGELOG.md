@@ -2,6 +2,15 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2015-10-09]
+### Added
+- 0.8.0: Optional reply_to to support Django 1.8 (@zakdoek)
+
+## [2015-10-09]
+### Added
+- 0.7.3: Optional reply_to to support Django 1.8 (@zakdoek)
+
+
 ## [2015-09-24]
 ### Changed
 - 0.7.2: Dictionary iterations to work with both Python 2 and 3. (@rollokb)

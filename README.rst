@@ -21,6 +21,11 @@ Add the following to your settings.py::
     MAILGUN_ACCESS_KEY = 'ACCESS-KEY'
     MAILGUN_SERVER_NAME = 'SERVER-NAME'
 
+Replace ``ACCESS-KEY`` with the ``API-KEY`` value from your Mailgun account details and
+``SERVER-NAME`` with the last part of your ``API Base URL``
+(eg. https://api.mailgun.net/v3/**<your_server_name>**), also found in your Mailgun
+account details.
+
 Now, when you use ``django.core.mail.send_mail``, Mailgun will send the messages.
 
 .. _Builtin Email Error Reporting: http://docs.djangoproject.com/en/1.2/howto/error-reporting/

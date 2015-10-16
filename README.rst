@@ -15,14 +15,14 @@ Install django-mailgun::
 
     pip install django-mailgun
 
-Add the following to your settings.py::
+Add the following to your ``settings.py``::
 
     EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
     MAILGUN_ACCESS_KEY = 'ACCESS-KEY'
     MAILGUN_SERVER_NAME = 'SERVER-NAME'
 
-Replace ``ACCESS-KEY`` with the ``API-KEY`` value from your Mailgun account details and
-``SERVER-NAME`` with the last part of your ``API Base URL``
+Replace ``ACCESS-KEY`` with the "API-KEY" value from your Mailgun account details and
+``SERVER-NAME`` with the last part of your "API Base URL"
 (eg. https://api.mailgun.net/v3/**<your_server_name>**), also found in your Mailgun
 account details.
 
@@ -41,7 +41,7 @@ Passing user-specific data
 Mailgun also includes the ability to send emails to a group of recipients via a single
 API call (https://documentation.mailgun.com/user_manual.html#batch-sending).  To make use of this,
 you need to pass Recipient Variables along with your API call.  To do so with Django-Mailgun,
-add a valid json string to the `extra_headers` attribute of EmailMessage and Django-Mailgun will
+add a valid JSON string to the ``extra_headers`` attribute of ``EmailMessage`` and Django-Mailgun will
 remove the string from the headers and send it appropriately.  For example::
 
     email = EmailMessage('Hi!', 'Cool message for %recipient.first_name%', 'admin@example.com', [joe@example.com, jane@example.com])
@@ -49,7 +49,7 @@ remove the string from the headers and send it appropriately.  For example::
     email.send()
 
 When Jane receives her email, its body should read 'Cool message for Jane', and Joe will see
-'Cool messagae for Joe'.
+'Cool message for Joe'.
 
 Analytics and other tracking features
 -------------------------------------
@@ -58,7 +58,7 @@ Mailgun provides the ability to track certain events that concern your emails. T
 API exposes these options (see https://documentation.mailgun.com/api-sending.html#sending).  These
 options can also be passed to Mailgun's SMTP server (see "Passing Sending Options" under
 https://documentation.mailgun.com/user_manual.html#sending-via-smtp). If you add
-any of the SMTP options to the `extra_headers` attribute of EmailMessage, Django-Mailgun
+any of the SMTP options to the ``extra_headers`` attribute of ``EmailMessage``, Django-Mailgun
 will map those values over to the appropriate API parameter. For example::
 
     email = EmailMessage('Hi!', 'Cool message for Joe', 'admin@example.com', [joe@example.com])

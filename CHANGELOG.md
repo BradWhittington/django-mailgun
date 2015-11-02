@@ -2,6 +2,10 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2015-11-02]
+### Changed
+- 0.9.0: README cleanup and corrections (@danifus)
+
 ## [2015-10-09]
 ### Added
 - 0.8.0: Optional reply_to to support Django 1.8 (@zakdoek)

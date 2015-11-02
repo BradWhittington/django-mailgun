@@ -10,3 +10,4 @@ Contributors
 - wmsmith (@wmsmith)
 - Rollo Konig-Brock (@rollokb)
 - @zakdoek
+- Daniel Hillier (@danifus)

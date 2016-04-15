@@ -68,6 +68,28 @@ will map those values over to the appropriate API parameter. For example::
 When the email is sent, it will be tagged with 'Tag 1' and 'Tag 2'. You can provide a string for
 any value, or a list or tuple that contains strings for options that can take multiple values.
 
+Attaching data to messages
+--------------------------
+
+When sending, you can attach data to your messages by passing custom data to X-Mailgun-Variables header
+(see https://documentation.mailgun.com/user_manual.html#attaching-data-to-messages).
+Data should be formatted as JSON, and it will be included in any webhook event releated to the email
+containing the custom data. For example::
+
+    email = EmailMessage('Hi!', 'Cool message for Joe', 'admin@example.com', [joe@example.com])
+    email.extra_headers['X-Mailgun-Variables'] = {'my-id': 'email_id', 'my-variable':'variable'}
+    email.send()
+
+Later, you can read this data in your Mailgun webhook handler. For example::
+
+    def mailgun_webhook(request):
+        email_id = request.data.get('my-id')
+        my_variable = request.data.get('my-variable')
+
+        # Do something with your variables
+
+        return Response(status=status.HTTP_200_OK)
+
 *NOTE*: Django-Mailgun does **NOT**
 validate your data for compliance with Mailgun's API; it merely maps over whatever values you provide.  For example,
 Mailgun's API states that no more than 3 tags are allowed per email, and each tag must be no greater than

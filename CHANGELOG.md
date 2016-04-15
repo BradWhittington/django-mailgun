@@ -2,6 +2,12 @@
 All enhancements and patches to cookiecutter-django will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2015-04-14]
+### Added
+- BCC support (@karabijavad)
+### Changed
+- Handle multiple user variables with X-Mailgun-Variables header (@matkot)
+
 ## [2015-11-02]
 ### Changed
 - 0.9.0: README cleanup and corrections (@danifus)

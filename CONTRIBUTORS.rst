@@ -11,3 +11,5 @@ Contributors
 - Rollo Konig-Brock (@rollokb)
 - @zakdoek
 - Daniel Hillier (@danifus)
+- @karabijavad
+- @matkot

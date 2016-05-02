@@ -29,7 +29,7 @@ HEADERS_MAP = {
     'X-Mailgun-Track': ('o:tracking', lambda x: x),
     'X-Mailgun-Track-Clicks': ('o:tracking-clicks', lambda x: x),
     'X-Mailgun-Track-Opens': ('o:tracking-opens', lambda x: x),
-    'X-Mailgun-Variables': lambda (v,k): (('v:%s' % v), k),
+    'X-Mailgun-Variables': lambda v, k: (('v:%s' % v), k),
 }
 
 

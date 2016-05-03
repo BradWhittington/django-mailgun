@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 import sys
 
-version = '0.9.0'
+version = '0.9.1'
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')

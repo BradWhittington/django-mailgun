@@ -89,7 +89,7 @@ class MailgunBackend(BaseEmailBackend):
                     for data in data_to_transform:
                         api_data.append((api_transformer[0], api_transformer[1](data)))
                 elif isinstance(data_to_transform, dict):
-                    for data in six.iteritems(data_to_transform:
+                    for data in six.iteritems(data_to_transform):
                         api_data.append(api_transformer(data))
                 else:
                     # we only have one value

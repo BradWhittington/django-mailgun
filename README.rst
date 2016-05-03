@@ -3,7 +3,6 @@ Django-Mailgun
 ==============
 A Django email backend for use with Mailgun
 
-
 Overview
 =================
 Django-Mailgun is a drop-in mail backend for Django_.

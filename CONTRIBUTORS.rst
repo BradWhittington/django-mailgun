@@ -13,3 +13,4 @@ Contributors
 - Daniel Hillier (@danifus)
 - @karabijavad
 - @matkot
+- @sydhenry

@@ -29,7 +29,7 @@ HEADERS_MAP = {
     'X-Mailgun-Track': ('o:tracking', lambda x: x),
     'X-Mailgun-Track-Clicks': ('o:tracking-clicks', lambda x: x),
     'X-Mailgun-Track-Opens': ('o:tracking-opens', lambda x: x),
-    'X-Mailgun-Variables': lambda v, k: (('v:%s' % v), k),
+    'X-Mailgun-Variables': lambda v_k: (('v:%s' % v_k[0]), v_k[1]),
 }
 
 
@@ -89,7 +89,7 @@ class MailgunBackend(BaseEmailBackend):
                     for data in data_to_transform:
                         api_data.append((api_transformer[0], api_transformer[1](data)))
                 elif isinstance(data_to_transform, dict):
-                    for data in data_to_transform.iteritems():
+                    for data in six.iteritems(data_to_transform:
                         api_data.append(api_transformer(data))
                 else:
                     # we only have one value

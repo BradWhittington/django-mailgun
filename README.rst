@@ -1,6 +1,9 @@
+**This project is unsupported. Please use https://github.com/anymail/django-anymail instead.**
+
 ==============
 Django-Mailgun
 ==============
+
 A Django email backend for use with Mailgun
 
 Overview
